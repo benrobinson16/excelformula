@@ -18,6 +18,6 @@ class JsonDatabase:
 
     def get(self, cell):
         if cell.formKey() in self.xl_dict:
-            return self.xl_dict[cell.formKey()]
+            return self.xl_dict[cell.form_key()]
         else:
             return ""

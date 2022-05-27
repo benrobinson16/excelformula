@@ -12,21 +12,21 @@ class FormulaSolver:
     def depndencies(self, range):
         components = range.split(':')
         if len(components) == 1:
-            return Cell.makeFromKey(components[0])
+            return Cell.make_from_key(components[0])
         else:
-            edgeCells = Cell.makeFromRange(range)
+            edgeCells = Cell.make_from_range(range)
             first = edgeCells[0]
             last = edgeCells[1]
 
             if first.row == last.row:
                 output = [first]
                 while not output[-1].equals(last):
-                    output.append(output[-1].incrementCol())
+                    output.append(output[-1].increment_col())
                 return output
             else:
                 output = [first]
                 while not output[-1].equals(last):
-                    output.append(output[-1].incrementRow())
+                    output.append(output[-1].increment_row())
                 return output
 
 
@@ -51,7 +51,7 @@ class FormulaSolver:
                                 y.append(v)
                         input_values[input] = numpy.array(y, dtype=object)
                     else:
-                        input_values[input] = self.calculateCell(cells)
+                        input_values[input] = self.calculate_cell(cells)
                         if isinstance(input_values[input], list):
                             input_values[input] = numpy.asarray(input_values[input])
                 result = func(**input_values)
@@ -63,17 +63,17 @@ class FormulaSolver:
             return val
 
 
-    def calculateColumn(self, start, end, labels=None):
+    def calculate_column(self, start, end, labels=None):
         output = []
         cell = start
 
         while not cell.equals(end):
-            v = self.calculateCell(cell)
+            v = self.calculate_cell(cell)
             if isinstance(v, numpy.ndarray):
                 output.append(v.item())
             else:
                 output.append(v)
-            cell = cell.incrementRow()
+            cell = cell.increment_row()
 
         if labels is not None:
             output = list(zip(labels, output))

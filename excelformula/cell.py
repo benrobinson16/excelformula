@@ -18,7 +18,7 @@ class Cell:
 
 
     @staticmethod
-    def makeFromKey(key):
+    def make_from_key(key):
         components = key.split('!')
         sheet = components[0]
 
@@ -38,7 +38,7 @@ class Cell:
 
 
     @staticmethod
-    def makeFromRange(range):
+    def make_from_range(range):
         components = range.split('!')
         sheet = components[0]
         cells = []
@@ -57,29 +57,29 @@ class Cell:
         return cells
         
 
-    def incrementRow(self):
+    def increment_row(self):
         return Cell(self.sheet, self.col, self.row + 1)
 
 
-    def incrementCol(self):
+    def increment_col(self):
         return Cell(self.sheet, self.nextCol(), self.row)
 
 
-    def nextCol(self):
+    def next_col(self):
         val = formulas.tokens.operand._col2index(self.col)
         val += 1
         return formulas.tokens.operand._index2col(val)
 
     
-    def setCol(self, newCol):
+    def set_col(self, newCol):
         return Cell(self.sheet, newCol, self.row)
 
 
-    def setRow(self, newRow):
+    def set_row(self, newRow):
         return Cell(self.sheet, self.col, newRow)
         
 
-    def formKey(self):
+    def form_key(self):
         return f"{self.sheet}!{self.col}{self.row}"
 
 

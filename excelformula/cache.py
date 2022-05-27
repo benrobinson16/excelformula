@@ -4,11 +4,11 @@ class Cache:
 
 
     def get(self, cell):
-        if cell.formKey() in self.dict:
-            return self.dict[cell.formKey()]
+        if cell.form_key() in self.dict:
+            return self.dict[cell.form_key()]
         else:
             return None
 
 
     def set(self, cell, val):
-        self.dict[cell.formKey()] = val
+        self.dict[cell.form_key()] = val
