@@ -1,4 +1,4 @@
-from cell import *
+from .cell import Cell, Constant
 import formulas
 import numpy
 
