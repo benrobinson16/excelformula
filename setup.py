@@ -13,5 +13,10 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url='https://github.com/benrobinson16/excelformula',
     packages=['excelformula'],
-    install_requires=['formulas @ git+https://github.com/benrobinson16/formulas.git@master'],
+    install_requires=[
+        'formulas @ git+https://github.com/benrobinson16/formulas.git@master',
+        'openpyxl',
+        'numpy',
+        'json'
+    ],
 )
