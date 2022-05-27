@@ -44,17 +44,15 @@ class FormulaSolver:
                     if isinstance(cells, list):
                         y = []
                         for c in cells:
-                            v = self.calculateCell(c)
-                            if isinstance(v, numpy.ndarray):
-                                y.append(v.item())
-                            else:
-                                y.append(v)
+                            y.append(self.calculate_cell(c))
                         input_values[input] = numpy.array(y, dtype=object)
                     else:
                         input_values[input] = self.calculate_cell(cells)
                         if isinstance(input_values[input], list):
                             input_values[input] = numpy.asarray(input_values[input])
                 result = func(**input_values)
+                if isinstance(result, numpy.ndarray) and result.size == 1:
+                    result = result.item()
                 self.cache.set(cell, result)
                 return result
             else:

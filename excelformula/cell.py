@@ -6,7 +6,7 @@ class Constant:
         self.key = key
 
 
-    def formKey(self):
+    def form_key(self):
         return self.key
 
 
@@ -62,7 +62,7 @@ class Cell:
 
 
     def increment_col(self):
-        return Cell(self.sheet, self.nextCol(), self.row)
+        return Cell(self.sheet, self.next_col(), self.row)
 
 
     def next_col(self):

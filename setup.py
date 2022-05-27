@@ -17,5 +17,6 @@ setuptools.setup(
         'formulas @ git+https://github.com/benrobinson16/formulas.git@master',
         'openpyxl',
         'numpy',
+        'mysql.connector'
     ],
 )
