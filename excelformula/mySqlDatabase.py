@@ -9,12 +9,16 @@ STR_TYPE = 1
 
 
 def export_to_mysql(file_path, database_name, host, username, password):
-    print("parsing excel file...")
-    # xl_model = formulas.ExcelModel().loads(file_path).finish()
-    # xl_dict = xl_model.to_dict()
     xl_dict = None
-    with open(file_path, 'r', encoding='utf-8') as f:
-        xl_dict = json.load(f)
+
+    if file_path.contains(".json"):
+        print("parsing json file...")
+        with open(file_path, 'r', encoding='utf-8') as f:
+            xl_dict = json.load(f)
+    else:
+        print("parsing excel file...")
+        xl_model = formulas.ExcelModel().loads(file_path).finish()
+        xl_dict = xl_model.to_dict()
 
     db = mysql.connector.connect(
         host=host,
